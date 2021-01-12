@@ -1,0 +1,6 @@
+framework module Pods_PhotoBucketLab {
+  umbrella header "Pods-PhotoBucketLab-umbrella.h"
+
+  export *
+  module * { export * }
+}
