@@ -12,16 +12,14 @@ class Photo {
     var caption: String
     var url: String
     var id: String?
-    
-    init(caption: String, url: String) {
-        self.caption = caption
-        self.url = url
-    }
+    var author: String
     
     init(documentSnapshot: DocumentSnapshot) {
         self.id = documentSnapshot.documentID
         let data = documentSnapshot.data()!
+        //print(data)
         self.caption = data["caption"] as! String
         self.url = data["url"] as! String
+        self.author = data["author"] as! String
     }
 }

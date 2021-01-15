@@ -44,10 +44,53 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Henry Photos" id="5Yk-tH-H6M"/>
+                    <connections>
+                        <outlet property="tableTitle" destination="5Yk-tH-H6M" id="H0D-ai-BuT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nG0-4N-zZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="470" y="111"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="5tW-p2-bXx">
+            <objects>
+                <viewController id="VEw-UT-uki" customClass="LoginViewController" customModule="PhotoBucketLab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f1L-Bc-0QE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaZ-11-NWY">
+                                <rect key="frame" x="50" y="452.5" width="314" height="45"/>
+                                <color key="backgroundColor" red="0.50196078430000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="LVe-UG-7Bo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="tintColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Sign in with Rosefire"/>
+                                <connections>
+                                    <action selector="pressedRoseLogin:" destination="VEw-UT-uki" eventType="touchUpInside" id="0Dk-LE-hh8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6ch-qd-Rb7"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6ch-qd-Rb7" firstAttribute="trailing" secondItem="QaZ-11-NWY" secondAttribute="trailing" constant="50" id="7x8-j3-e0j"/>
+                            <constraint firstItem="QaZ-11-NWY" firstAttribute="centerY" secondItem="6ch-qd-Rb7" secondAttribute="centerY" id="Q3B-1M-02t"/>
+                            <constraint firstItem="QaZ-11-NWY" firstAttribute="leading" secondItem="6ch-qd-Rb7" secondAttribute="leading" constant="50" id="nBb-UD-EVt"/>
+                            <constraint firstItem="QaZ-11-NWY" firstAttribute="centerX" secondItem="6ch-qd-Rb7" secondAttribute="centerX" id="vb0-N2-Qgf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wEZ-Mm-E71"/>
+                    <connections>
+                        <segue destination="ZAl-M2-5wV" kind="show" identifier="ShowListSegue" id="qRP-qX-qRd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W83-QE-iPp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="110"/>
         </scene>
         <!--Photo Bucket Detail View Controller-->
         <scene sceneID="Suf-PB-k6x">
@@ -89,21 +132,19 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2vV-2W-Nmc">
                                 <rect key="frame" x="0.0" y="188" width="414" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="Zem-A6-0qe"/>
                                     <constraint firstAttribute="height" constant="200" id="eDa-Hy-2DS"/>
                                     <constraint firstAttribute="height" constant="200" id="gFF-m4-ZRb"/>
+                                    <constraint firstAttribute="width" secondItem="2vV-2W-Nmc" secondAttribute="height" multiplier="207:100" id="itt-Cr-7iC"/>
                                     <constraint firstAttribute="height" constant="200" id="lu4-bT-y6e"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Zem-A6-0qe"/>
                                         <exclude reference="eDa-Hy-2DS"/>
                                         <exclude reference="lu4-bT-y6e"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="constraints">
-                                        <include reference="Zem-A6-0qe"/>
                                         <exclude reference="eDa-Hy-2DS"/>
                                         <exclude reference="gFF-m4-ZRb"/>
                                         <include reference="lu4-bT-y6e"/>
@@ -201,12 +242,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ZAl-M2-5wV" kind="relationship" relationship="rootViewController" id="8Hs-Jk-N6r"/>
+                        <segue destination="VEw-UT-uki" kind="relationship" relationship="rootViewController" id="Nmr-ds-tWh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qii-7V-yfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-420" y="111"/>
+            <point key="canvasLocation" x="-1188" y="108"/>
         </scene>
     </scenes>
     <resources>

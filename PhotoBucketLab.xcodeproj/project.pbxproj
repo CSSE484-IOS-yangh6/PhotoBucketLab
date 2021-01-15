@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32B07AA380C16EA909D6A513 /* Pods_PhotoBucketLab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58C81BF4B0B12C1F0D248E6 /* Pods_PhotoBucketLab.framework */; };
+		E41778A325B1E29A004B3FD3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41778A225B1E29A004B3FD3 /* LoginViewController.swift */; };
 		E497C7FC25AD914700654C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497C7FB25AD914700654C26 /* AppDelegate.swift */; };
 		E497C7FE25AD914700654C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497C7FD25AD914700654C26 /* SceneDelegate.swift */; };
 		E497C80325AD914700654C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E497C80125AD914700654C26 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		A58C81BF4B0B12C1F0D248E6 /* Pods_PhotoBucketLab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoBucketLab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD09EF5C3BFE1E0DB840781 /* Pods-PhotoBucketLab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBucketLab.debug.xcconfig"; path = "Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab.debug.xcconfig"; sourceTree = "<group>"; };
 		BFB26175F268D5C5753BB6C5 /* Pods-PhotoBucketLab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBucketLab.release.xcconfig"; path = "Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab.release.xcconfig"; sourceTree = "<group>"; };
+		E41778A225B1E29A004B3FD3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E497C7F825AD914700654C26 /* PhotoBucketLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBucketLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E497C7FB25AD914700654C26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E497C7FD25AD914700654C26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				E497C7FD25AD914700654C26 /* SceneDelegate.swift */,
 				E497C81125AD927900654C26 /* PhotoBucketTableViewController.swift */,
 				E497C81825AD99DF00654C26 /* PhotoBucketDetailViewController.swift */,
+				E41778A225B1E29A004B3FD3 /* LoginViewController.swift */,
 				E497C81525AD97FB00654C26 /* Photo.swift */,
 				E497C80125AD914700654C26 /* Main.storyboard */,
 				E497C80425AD914800654C26 /* Assets.xcassets */,
@@ -112,6 +115,7 @@
 				E497C7F525AD914700654C26 /* Frameworks */,
 				E497C7F625AD914700654C26 /* Resources */,
 				FEE65EF31C956FAA1867C401 /* [CP] Embed Pods Frameworks */,
+				5A37026DB30343145EBCFE8F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,6 +173,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5A37026DB30343145EBCFE8F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BBCFEB5B8B69C8A0EE699755 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -215,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41778A325B1E29A004B3FD3 /* LoginViewController.swift in Sources */,
 				E497C81625AD97FB00654C26 /* Photo.swift in Sources */,
 				E497C81225AD927900654C26 /* PhotoBucketTableViewController.swift in Sources */,
 				E497C7FC25AD914700654C26 /* AppDelegate.swift in Sources */,
