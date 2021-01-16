@@ -81,7 +81,7 @@ class PhotoBucketTableViewController: UITableViewController {
                 print("No user, go back to login page")
                 self.navigationController?.popViewController(animated: true)
             } else {
-                print("signed in. Stay on this page")
+                print("signed in. Stay on this page. User: \(Auth.auth().currentUser!.uid)")
             }
         })
         
