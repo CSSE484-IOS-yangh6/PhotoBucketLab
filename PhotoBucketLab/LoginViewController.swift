@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     
     let showListSegueIdentifier = "ShowListSegue"
     let REGISTRY_TOKEN = "addbbde2-8bf9-4dd7-af05-fb01e47a27dc"
-    
     var provider = OAuthProvider(providerID: "github.com")
     
     override func viewDidLoad() {
