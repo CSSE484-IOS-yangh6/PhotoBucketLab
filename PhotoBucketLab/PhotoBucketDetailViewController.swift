@@ -12,6 +12,11 @@ class PhotoBucketDetailViewController: UIViewController {
     
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+
+    @IBOutlet weak var uploadCaptionLabel: UILabel!
+    @IBOutlet weak var profilePhotoImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var userStackView: UIStackView!
     
     var photo: Photo?
     var photoRef: DocumentReference!
@@ -68,6 +73,7 @@ class PhotoBucketDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userStackView.isHidden = true
         photoListener = photoRef.addSnapshotListener { (documentSnapshot, error) in
             if let error = error {
                 print("Error getting photo \(error)")
@@ -86,6 +92,7 @@ class PhotoBucketDetailViewController: UIViewController {
             } else {
                 self.navigationItem.rightBarButtonItem = nil
             }
+            UserManager.shared.beginListening(uid: self.photo!.author, changeListener: self.updateUserView)
             self.updateView()
         }
         
@@ -99,5 +106,18 @@ class PhotoBucketDetailViewController: UIViewController {
     
     func updateView() {
         captionLabel.text = photo?.caption
+        uploadCaptionLabel.text = "Uploaded \(photo!.caption)"
+    }
+    
+    func updateUserView() {
+        userStackView.isHidden = UserManager.shared.name.isEmpty && UserManager.shared.photoUrl.isEmpty
+        if (!UserManager.shared.name.isEmpty) {
+            usernameLabel.text = UserManager.shared.name
+        } else {
+            usernameLabel.text = "unknown"
+        }
+        if (!UserManager.shared.photoUrl.isEmpty) {
+            ImageUtils.load(imageView: profilePhotoImageView, from: UserManager.shared.photoUrl)
+        }
     }
 }

@@ -48,6 +48,7 @@ class UserManager {
     }
     
     func beginListening(uid: String, changeListener: (() -> Void)?) {
+        stopListening()
         let userRef = _collectionRef.document(uid)
         userRef.addSnapshotListener { (documentSnapshot, error) in
             if let error = error {
@@ -72,7 +73,7 @@ class UserManager {
         ])
     }
     
-    func updatePhotoUrl(phoroUrl: String) {
+    func updatePhotoUrl(photoUrl: String) {
         let userRef = _collectionRef.document(Auth.auth().currentUser!.uid)
         userRef.updateData([
             kKeyPhotoUrl: photoUrl

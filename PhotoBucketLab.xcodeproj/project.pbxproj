@@ -13,6 +13,7 @@
 		E494E9A525C1B975004DD607 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9A425C1B975004DD607 /* ProfilePageViewController.swift */; };
 		E494E9A825C1BBBB004DD607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9A725C1BBBB004DD607 /* Constants.swift */; };
 		E494E9AB25C1BCDF004DD607 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9AA25C1BCDF004DD607 /* UserManager.swift */; };
+		E494E9AE25C1CBA6004DD607 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9AD25C1CBA6004DD607 /* ImageUtils.swift */; };
 		E497C7FC25AD914700654C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497C7FB25AD914700654C26 /* AppDelegate.swift */; };
 		E497C7FE25AD914700654C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497C7FD25AD914700654C26 /* SceneDelegate.swift */; };
 		E497C80325AD914700654C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E497C80125AD914700654C26 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		E494E9A425C1B975004DD607 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		E494E9A725C1BBBB004DD607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E494E9AA25C1BCDF004DD607 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		E494E9AD25C1CBA6004DD607 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		E497C7F825AD914700654C26 /* PhotoBucketLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBucketLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E497C7FB25AD914700654C26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E497C7FD25AD914700654C26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				E494E9A425C1B975004DD607 /* ProfilePageViewController.swift */,
 				E494E9A725C1BBBB004DD607 /* Constants.swift */,
 				E494E9AA25C1BCDF004DD607 /* UserManager.swift */,
+				E494E9AD25C1CBA6004DD607 /* ImageUtils.swift */,
 			);
 			path = PhotoBucketLab;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				E494E9A525C1B975004DD607 /* ProfilePageViewController.swift in Sources */,
 				E494E9AB25C1BCDF004DD607 /* UserManager.swift in Sources */,
 				E494E9A825C1BBBB004DD607 /* Constants.swift in Sources */,
+				E494E9AE25C1CBA6004DD607 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

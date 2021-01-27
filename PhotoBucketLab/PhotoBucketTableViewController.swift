@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class PhotoBucketTableViewController: UITableViewController {
     let photoBucketCellIdentifier = "PhotoBucketCell"
@@ -18,6 +19,8 @@ class PhotoBucketTableViewController: UITableViewController {
     @IBOutlet weak var tableTitle: UINavigationItem!
     
     var photos = [Photo]()
+    var captionText: String?
+    var url: String?
     var isShowingAllPhotos = true
     var emptyUrlPhotos = ["https://thenewswheel.com/wp-content/uploads/2016/07/rusted-car-broken-down-rust-damage-760x515.jpg", "https://knowhow.napaonline.com/wp-content/uploads/2018/04/rust_in_peace._15700920021.jpg",
         "https://knowhow.napaonline.com/wp-content/uploads/2017/09/10365219726_0b53e83173.jpg"]
@@ -40,13 +43,13 @@ class PhotoBucketTableViewController: UITableViewController {
 //        let alertController = UIAlertController(title: nil,
 //                                                message: nil,
 //                                                preferredStyle: .actionSheet)
-//        
+//
 //        alertController.addAction(UIAlertAction(title: "Create Photo",
 //                                                style: .default)
 //        { (action) in
 //            self.showAddPhotoDialog()
 //        })
-//        
+//
 //        alertController.addAction(UIAlertAction(title: self.isShowingAllPhotos ? "Show only my photos" : "Show all photos",
 //                                                style: .default)
 //        { (action) in
@@ -55,7 +58,7 @@ class PhotoBucketTableViewController: UITableViewController {
 //            // Update the list
 //            self.startListening()
 //        })
-//        
+//
 //        alertController.addAction(UIAlertAction(title: "Sign out",
 //                                                style: .default)
 //        { (action) in
@@ -64,13 +67,13 @@ class PhotoBucketTableViewController: UITableViewController {
 //            } catch {
 //                print("sign out error")
 //            }
-//            
+//
 //        })
-//        
+//
 //        alertController.addAction(UIAlertAction(title: "Cancel",
 //                                                style: .cancel,
 //                                                handler: nil))
-//        
+//
 //        present(alertController, animated: true, completion: nil)
 //    }
     
@@ -137,35 +140,46 @@ class PhotoBucketTableViewController: UITableViewController {
             textField.placeholder = "Caption"
         }
         
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Image URL or blank"
-        }
-        
         alertController.addAction(UIAlertAction(title: "Cancel",
                                                 style: .cancel,
                                                 handler: nil))
-        alertController.addAction(UIAlertAction(title: "Create",
+        alertController.addAction(UIAlertAction(title: "Upload Photo",
                                                 style: .default)
         { (action) in
             let captionTextField = alertController.textFields![0] as UITextField
-            let urlTextField = alertController.textFields![1] as UITextField
+            self.captionText = captionTextField.text!
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.allowsEditing = true
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+            } else {
+                imagePickerController.sourceType = .photoLibrary
+            }
+            self.present(imagePickerController, animated: true, completion: nil)
+            
 //            self.photos.insert(Photo(caption: captionTextField.text!, url: urlTextField.text!), at: 0)
             //self.tableView.reloadData()
-            var url: String?
-            if urlTextField.text! == "" {
-                url = self.emptyUrlPhotos[Int.random(in: 0..<self.emptyUrlPhotos.count)]
-            } else {
-                url = urlTextField.text!
-            }
-            self.photosRef.addDocument(data: [
-                "caption": captionTextField.text!,
-                "url": url!,
-                "created": Timestamp.init(),
-                "author": Auth.auth().currentUser!.uid
-            ])
+            //var url: String?
+//            if urlTextField.text! == "" {
+//                url = self.emptyUrlPhotos[Int.random(in: 0..<self.emptyUrlPhotos.count)]
+//            } else {
+//                url = urlTextField.text!
+//            }
+            
         })
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func addPhotoDocument() {
+        self.photosRef.addDocument(data: [
+            "caption": self.captionText!,
+            "url": self.url!,
+            "created": Timestamp.init(),
+            "author": Auth.auth().currentUser!.uid
+        ])
+        print("Document Created")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -201,5 +215,52 @@ class PhotoBucketTableViewController: UITableViewController {
         }
     }
     
+    func uploadImage(_ image: UIImage) {
+        if let imageData = ImageUtils.resize(image: image) {
+            let storageRef = Storage.storage().reference().child("Pics").child(Auth.auth().currentUser!.uid)
+            _ = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+                if let error = error {
+                    print("error uploading Image \(error)")
+                    return
+                }
+                
+                print("Upload Complete")
+                // You can also access to download URL after upload.
+                storageRef.downloadURL { (url, error) in
+                    if let error = error {
+                        print("error getting download url \(error)")
+                        return
+                    }
+                    if let downloadURL = url {
+                        // Uh-oh, an error occurred!
+                        print("Got download url: \(downloadURL)")
+                        //UserManager.shared.updatePhotoUrl(photoUrl: downloadURL.absoluteString)
+                        self.url = downloadURL.absoluteString
+                        self.addPhotoDocument()
+                    }
+                }
+                
+            }
+        } else {
+            print("Error getting image data")
+        }
+    }
+}
+
+extension PhotoBucketTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage? {
+            uploadImage(image)
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage? {
+            uploadImage(image)
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
