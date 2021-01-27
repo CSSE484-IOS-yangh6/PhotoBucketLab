@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     let showListSegueIdentifier = "ShowListSegue"
     let REGISTRY_TOKEN = "addbbde2-8bf9-4dd7-af05-fb01e47a27dc"
     var provider = OAuthProvider(providerID: "github.com")
+    var rosefireName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class LoginViewController: UIViewController {
             print("Someone is already signed in! Just move on!")
             self.performSegue(withIdentifier: self.showListSegueIdentifier, sender: self)
         }
+        rosefireName = nil
     }
     
     
@@ -44,6 +46,7 @@ class LoginViewController: UIViewController {
             //print("Result = \(result!.token!)")
             print("Result = \(result!.username!)")
             print("Result = \(result!.name!)")
+            self.rosefireName = result!.name!
             print("Result = \(result!.email!)")
             print("Result = \(result!.group!)")
             
@@ -86,5 +89,12 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showListSegueIdentifier {
+            UserManager.shared.addNewUserMabye(uid: Auth.auth().currentUser!.uid, name: rosefireName ?? Auth.auth().currentUser!.displayName, photoUrl: Auth.auth().currentUser!.photoURL?.absoluteString)
+        }
+        
     }
 }

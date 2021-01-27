@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		32B07AA380C16EA909D6A513 /* Pods_PhotoBucketLab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58C81BF4B0B12C1F0D248E6 /* Pods_PhotoBucketLab.framework */; };
 		E41778A325B1E29A004B3FD3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41778A225B1E29A004B3FD3 /* LoginViewController.swift */; };
+		E494E9A225C1B3B8004DD607 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9A125C1B3B8004DD607 /* SideNavViewController.swift */; };
+		E494E9A525C1B975004DD607 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9A425C1B975004DD607 /* ProfilePageViewController.swift */; };
+		E494E9A825C1BBBB004DD607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9A725C1BBBB004DD607 /* Constants.swift */; };
+		E494E9AB25C1BCDF004DD607 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494E9AA25C1BCDF004DD607 /* UserManager.swift */; };
 		E497C7FC25AD914700654C26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497C7FB25AD914700654C26 /* AppDelegate.swift */; };
 		E497C7FE25AD914700654C26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E497C7FD25AD914700654C26 /* SceneDelegate.swift */; };
 		E497C80325AD914700654C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E497C80125AD914700654C26 /* Main.storyboard */; };
@@ -25,6 +29,10 @@
 		ADD09EF5C3BFE1E0DB840781 /* Pods-PhotoBucketLab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBucketLab.debug.xcconfig"; path = "Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab.debug.xcconfig"; sourceTree = "<group>"; };
 		BFB26175F268D5C5753BB6C5 /* Pods-PhotoBucketLab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBucketLab.release.xcconfig"; path = "Target Support Files/Pods-PhotoBucketLab/Pods-PhotoBucketLab.release.xcconfig"; sourceTree = "<group>"; };
 		E41778A225B1E29A004B3FD3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E494E9A125C1B3B8004DD607 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavViewController.swift; sourceTree = "<group>"; };
+		E494E9A425C1B975004DD607 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		E494E9A725C1BBBB004DD607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E494E9AA25C1BCDF004DD607 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E497C7F825AD914700654C26 /* PhotoBucketLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBucketLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E497C7FB25AD914700654C26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E497C7FD25AD914700654C26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 				E497C80625AD914800654C26 /* LaunchScreen.storyboard */,
 				E497C80925AD914800654C26 /* Info.plist */,
 				E497C81C25ADA31600654C26 /* GoogleService-Info.plist */,
+				E494E9A125C1B3B8004DD607 /* SideNavViewController.swift */,
+				E494E9A425C1B975004DD607 /* ProfilePageViewController.swift */,
+				E494E9A725C1BBBB004DD607 /* Constants.swift */,
+				E494E9AA25C1BCDF004DD607 /* UserManager.swift */,
 			);
 			path = PhotoBucketLab;
 			sourceTree = "<group>";
@@ -236,12 +248,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E494E9A225C1B3B8004DD607 /* SideNavViewController.swift in Sources */,
 				E41778A325B1E29A004B3FD3 /* LoginViewController.swift in Sources */,
 				E497C81625AD97FB00654C26 /* Photo.swift in Sources */,
 				E497C81225AD927900654C26 /* PhotoBucketTableViewController.swift in Sources */,
 				E497C7FC25AD914700654C26 /* AppDelegate.swift in Sources */,
 				E497C7FE25AD914700654C26 /* SceneDelegate.swift in Sources */,
 				E497C81925AD99DF00654C26 /* PhotoBucketDetailViewController.swift in Sources */,
+				E494E9A525C1B975004DD607 /* ProfilePageViewController.swift in Sources */,
+				E494E9AB25C1BCDF004DD607 /* UserManager.swift in Sources */,
+				E494E9A825C1BBBB004DD607 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

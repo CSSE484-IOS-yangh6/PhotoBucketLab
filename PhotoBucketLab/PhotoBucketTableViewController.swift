@@ -24,53 +24,55 @@ class PhotoBucketTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = editButtonItem
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(showMenu))
+        //navigationItem.leftBarButtonItem = editButtonItem
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰",
+//                                                            style: .plain,
+//                                                            target: self,
+//                                                            action: #selector(showMenu))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddPhotoDialog))
 //        photos.append(Photo(caption: "Koenigsegg Jesko", url: "https://www.cars-show.org/wp-content/uploads/2019/06/Koenigsegg-Jesko-Red-Cherry-Edition-2020-01.jpg"))
 //        photos.append(Photo(caption: "Bugatti Chiron", url: "https://im.rediff.com/money/2017/nov/29bugatti.jpg?w=670&h=900"))
         photosRef = Firestore.firestore().collection("Photos")
     }
     
-    @objc func showMenu() {
-        let alertController = UIAlertController(title: nil,
-                                                message: nil,
-                                                preferredStyle: .actionSheet)
-        
-        alertController.addAction(UIAlertAction(title: "Create Photo",
-                                                style: .default)
-        { (action) in
-            self.showAddPhotoDialog()
-        })
-        
-        alertController.addAction(UIAlertAction(title: self.isShowingAllPhotos ? "Show only my photos" : "Show all photos",
-                                                style: .default)
-        { (action) in
-            // Toggle the show all vs show mine mode.
-            self.isShowingAllPhotos = !self.isShowingAllPhotos
-            // Update the list
-            self.startListening()
-        })
-        
-        alertController.addAction(UIAlertAction(title: "Sign out",
-                                                style: .default)
-        { (action) in
-            do {
-                try Auth.auth().signOut()
-            } catch {
-                print("sign out error")
-            }
-            
-        })
-        
-        alertController.addAction(UIAlertAction(title: "Cancel",
-                                                style: .cancel,
-                                                handler: nil))
-        
-        present(alertController, animated: true, completion: nil)
-    }
+//    @objc func showMenu() {
+//        let alertController = UIAlertController(title: nil,
+//                                                message: nil,
+//                                                preferredStyle: .actionSheet)
+//        
+//        alertController.addAction(UIAlertAction(title: "Create Photo",
+//                                                style: .default)
+//        { (action) in
+//            self.showAddPhotoDialog()
+//        })
+//        
+//        alertController.addAction(UIAlertAction(title: self.isShowingAllPhotos ? "Show only my photos" : "Show all photos",
+//                                                style: .default)
+//        { (action) in
+//            // Toggle the show all vs show mine mode.
+//            self.isShowingAllPhotos = !self.isShowingAllPhotos
+//            // Update the list
+//            self.startListening()
+//        })
+//        
+//        alertController.addAction(UIAlertAction(title: "Sign out",
+//                                                style: .default)
+//        { (action) in
+//            do {
+//                try Auth.auth().signOut()
+//            } catch {
+//                print("sign out error")
+//            }
+//            
+//        })
+//        
+//        alertController.addAction(UIAlertAction(title: "Cancel",
+//                                                style: .cancel,
+//                                                handler: nil))
+//        
+//        present(alertController, animated: true, completion: nil)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -126,7 +128,7 @@ class PhotoBucketTableViewController: UITableViewController {
         Auth.auth().removeStateDidChangeListener(authStateListenerHandle)
     }
     
-    func showAddPhotoDialog() {
+    @objc func showAddPhotoDialog() {
         let alertController = UIAlertController(title: "Create a new photo",
                                                 message: "",
                                                 preferredStyle: .alert)
